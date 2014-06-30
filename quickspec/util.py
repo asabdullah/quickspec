@@ -49,3 +49,18 @@ def deriv(xv, yv=None):
         ret += yv[idxs[i]] * num / den
 
     return ret
+
+def download(url, fname):
+    """ retrieve contents of url, copy to fname. """
+    pct = 0
+    def dlhook(count, block_size, total_size):
+        ppct = int(100. * (count-1) * block_size / total_size)
+        cpct = int(100. * (count+0) * block_size / total_size)
+        if cpct > ppct: sys.stdout.write( "\r quickspec::util::download:: " + int(10. * cpct / 100)*"-" + "> " + ("%02d" % cpct) + r"%" ); sys.stdout.flush()
+
+    try:
+        urllib.urlretrieve(url, filename=fname, reporthook=dlhook)
+        sys.stdout.write( "\n" ); sys.stdout.flush()
+    except:
+        print "quickspec::util::download failed! removing partial."
+        os.remove(fname)
