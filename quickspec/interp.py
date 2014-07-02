@@ -2,16 +2,16 @@ import numpy as np
 
 def lagrange(x, xv, yv, n=3, check_bounds=True):
     """ n-point lagrange interpolation of the curve (xv,yv) at point x. """
-    assert( npts > 1 ) #behavior not yet defined for npts <= 1.
+    assert( n > 1 ) #behavior not yet defined for n <= 1.
 
     if check_bounds and ((x < xv[0]) or (x > xv[-1])):
         raise ValueError("x out of bounds. xlo, x, xhi = (%2.2e, %2.2e, %2.2e)" % (xv[0], x, xv[-1]))
 
-    dx    = int( np.floor(0.5*npts) )
-    ixmin = min( max( np.searchsorted( xv, x, side='left' ) - dx, 0 ), len(xv) - npts )
-    idxs  = np.arange(0,npts) + ixmin
+    dx    = int( np.floor(0.5*n) )
+    ixmin = min( max( np.searchsorted( xv, x, side='left' ) - dx, 0 ), len(xv) - n )
+    idxs  = np.arange(0,n) + ixmin
 
-    iv    = np.arange(0, npts)
+    iv    = np.arange(0, n)
     xs    = xv[idxs]
     ys    = yv[idxs]
 
@@ -35,10 +35,10 @@ def linterp2d(x, y, xv, yv, f, check_bounds=True):
 
     # bilinear interpolation of mat
     den = (xv[ix+1] - xv[ix]) * (yv[iy+1] - yv[iy])
-    ret = ( mat[  ix,  iy] * (xv[ix+1] - x) * (yv[iy+1] - y) +
-            mat[ix+1,  iy] * (x - xv[ix  ]) * (yv[iy+1] - y) +
-            mat[  ix,iy+1] * (xv[ix+1] - x) * (y - yv[iy  ]) +
-            mat[ix+1,iy+1] * (x - xv[ix  ]) * (y - yv[iy  ]) ) / den 
+    ret = ( f[  ix,  iy] * (xv[ix+1] - x) * (yv[iy+1] - y) +
+            f[ix+1,  iy] * (x - xv[ix  ]) * (yv[iy+1] - y) +
+            f[  ix,iy+1] * (xv[ix+1] - x) * (y - yv[iy  ]) +
+            f[ix+1,iy+1] * (x - xv[ix  ]) * (y - yv[iy  ]) ) / den 
 
     return ret
 
