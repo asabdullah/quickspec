@@ -18,11 +18,11 @@ def dplanck_dt(nu,T):
     return 2*h*nu**3 / c**2 / (np.exp(h*nu/k/T) - 1.)**2 * h*nu/k/T**2 * np.exp(h*nu/k/T)
 
 def j2k(nu):
-    """ returns the conversion factor between Jansky units and Kelvin. """
+    """ returns the conversion factor between Jansky units and CMB Kelvin. """
     x = h*nu/(k*tcmb)
     g = (np.exp(x) - 1.)**2 / x**2 / np.exp(x)
     return c**2 / (2. * nu**2 * k) * g * 1.e-26
 
 def k2j(nu):
-    """ returns the conversion factor between Kelvin and Jansky units. """
+    """ returns the conversion factor between CMB Kelvin and Jansky units. """
     return 1.0 / j2k(nu)
