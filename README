@@ -1,0 +1,5 @@
+quickspec
+=========
+
+This library contains python code to estimate the angular
+power spectra of cosmic fields under the limber approximation.
