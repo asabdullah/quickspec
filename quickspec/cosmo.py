@@ -46,7 +46,7 @@ class lcdm():
         # /int_{a=0}^{a(z)} da / H_a / a = t
         # H0 = km/s/Mpc * 1Mpc/1e6pc * 1e3m/km * 3.08e16pc / m
         # 1Mpc = 3.25e6 ly
-        return scipy.integrate.quad( lambda a : 1. / (self.H_a(a) / 3.08e19) / a / (365*24.*60.*60.), 1.e-10, 1./(1+z) )
+        return scipy.integrate.quad( lambda a : 1. / (self.H_a(a) / 3.08e19) / a / (365*24.*60.*60.), 1.e-10, 1./(1+z) )[0]/1.e9
 
     def x_z(self, z):
         """ returns the conformal distance (in Mpc) to redshift z. """
