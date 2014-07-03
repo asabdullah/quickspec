@@ -94,3 +94,7 @@ class lcdm():
         assert(omr < 1.e-2) # sanity check that omr is negligible at this redshift.
 
         return (18.*np.pi**2 + 82.*(omm - 1.) - 39*(omm - 1.)**2) / omm
+
+    def aeq_lm(self):
+        """ returns the scale factor at radiation-matter equality. """
+        return 1. / ( self.oml / self.omm )**(1./3.)
