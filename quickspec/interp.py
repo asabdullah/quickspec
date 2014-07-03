@@ -28,7 +28,7 @@ def linterp2d(x, y, xv, yv, f, check_bounds=True):
         raise ValueError("x out of bounds. xlo, x, xhi = (%2.2e, %2.2e, %2.2e)" % (xv[0], x, xv[-1]))
 
     if check_bounds and ((y < yv[0]) or (y > yv[-1])):
-        raise ValueError("y out of bounds. xlo, x, xhi = (%2.2e, %2.2e, %2.2e)" % (yv[0], y, yv[-1]))
+        raise ValueError("y out of bounds. ylo, y, yhi = (%2.2e, %2.2e, %2.2e)" % (yv[0], y, yv[-1]))
 
     ix = min( max( np.searchsorted( xv, x, side='left' ) - 1, 0 ), len(xv) - 2 )
     iy = min( max( np.searchsorted( yv, y, side='left' ) - 1, 0 ), len(yv) - 2 )
