@@ -55,3 +55,28 @@ class mps():
         dsigma2 *= 3. / (r**4 * np.pi**2)
 
         return dsigma2
+
+    def cl_limber_x( self, l, k1, k2=None, xmin=0.0, xmax=13000. ):
+        """ calculate the cross-spectrum at multipole l between kernels k1 and k2 in the limber approximation.
+        the distance integral is performed from conformal distance xmin to xmax (both in Mpc). """
+        if k2 == None: k2 = k1
+
+        def integrand(x):
+            z = self.cosmo.z_x(x)
+            return 1./x**2 * k1.w_lxz(l,x,z) * k2.w_lxz(l,x,z) * self.p_kz(l/x, z)
+
+        return scipy.integrate.quad( integrand, xmin, xmax, limit=100 )[0]
+
+    def cl_limber_z( self, l, k1, k2=None, zmin=0.0, zmax=1100. ):
+        """ calculate the cross-spectrum at multipole l between kernels k1 and k2 in the limber approximation.
+        the distance integral is performed from redshifts zmin to zmax. """
+        if k2 == None: k2 = k1
+
+        def integrand(z):
+            x = self.cosmo.x_z(z)
+            return 1./x**2 / self.cosmo.H_z(z) * 3.e5 * k1.w_lxz(l,x,z) * k2.w_lxz(l,x,z) * self.p_kz(l/x, z)
+
+        return scipy.integrate.quad( integrand, zmin, zmax, limit=100 )[0]
+
+class mps_lin(mps): 
+    pass
