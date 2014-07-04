@@ -96,5 +96,5 @@ class lcdm():
         return (18.*np.pi**2 + 82.*(omm - 1.) - 39*(omm - 1.)**2) / omm
 
     def aeq_lm(self):
-        """ returns the scale factor at radiation-matter equality. """
+        """ returns the scale factor at lambda - matter equality. """
         return 1. / ( self.oml / self.omm )**(1./3.)
