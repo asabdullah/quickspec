@@ -11,7 +11,12 @@ class mps_lin_camb(mps.mps_lin):
                                   32., 16., 12., 8., 6., 4., 3., 2.,
                                   1.5, 1., 0.5, 0.])):
         """ wrapper class for the linear matter power spectrum computed by CAMB. """
-        import pycamb
+
+        try:
+            import pycamb
+        except:
+            print "pycamb (https://github.com/joezuntz/pycamb) could not be loaded. is it installed?"
+            raise
 
         self.cosmo     = cosmo
 

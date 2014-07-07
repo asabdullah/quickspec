@@ -3,3 +3,8 @@ quickspec
 
 This library contains python code to estimate the angular
 power spectra of cosmic fields under the limber approximation.
+
+Requirements:
+
+- If you want to interface with CAMB (http://camb.info) to obtain matter power spectra, the pycamb (https://github.com/joezuntz/pycamb, Sept. 2010 or greater) library is required.
+
