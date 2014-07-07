@@ -64,3 +64,19 @@ def download(url, fname):
     except:
         print "quickspec::util::download failed! removing partial."
         os.remove(fname)
+
+def pair(k, z):
+    """ helper function to broadcast k and z to equally sized 1D arrays. """
+    k = np.asarray(k)
+    z = np.asarray(z)
+    if (np.size(k) > 1) and (np.size(z) == 1):
+        z = np.ones( np.size(k) ) * z
+        s = np.shape(k)
+    elif (np.size(z) > 1) and (np.size(k) == 1):
+        k = np.ones( np.size(z) ) * k
+        s = np.shape(z)
+    else:
+        assert( np.size(k) == np.size(z) )
+        s = np.shape(k)
+
+    return k.flatten(), z.flatten(), s
