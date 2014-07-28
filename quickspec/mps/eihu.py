@@ -1,4 +1,4 @@
-# Fitting Formulae for linear matter power spectra in CDM + Baryon + Massive Neutrino (MDM) cosmologies,
+# Fitting formulae for linear matter power spectra in CDM + Baryon + Massive Neutrino (MDM) cosmologies,
 # using the Eisenstein and Hu fitting formulae (http://arxiv.org/abs/astro-ph/9710252).
 # Code adapted from http://background.uchicago.edu/~whu/transfer/power.c
 /* Daniel J. Eisenstein & Wayne Hu, Institute for Advanced Study */
@@ -9,9 +9,11 @@ import mps
 
 class mps_lin_eihu(mps.mps_lin):
     def __init__(self, cosmo, deltaH=None, tilt=1, sigma8=None):
+        """ Linear matter power spectrum given by fitting function of Eisenstein and Hu (1999) """
+        
         self.cosmo = cosmo
 
-        theta_cmb = 2.728 / 2.7 # Assume T_cmb = 2.728 K */
+        theta_cmb = 2.728 / 2.7 # Assume T_cmb = 2.728 K
 
         num_degen_hdm = 1.0
 
