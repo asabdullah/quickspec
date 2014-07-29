@@ -8,7 +8,13 @@ import mps
 
 class mps_pd(mps.mps):
     def __init__(self, mps, kmin=2.e-5, kmax=2.e3, npts=10, cache=False):
-        """ Non-linear matter power spectrum using Peacock and Dodds (1996) fitting formula: astro-ph/9603031 """
+        """
+        Non-linear matter power spectrum using Peacock and Dodds (1996) fitting formula: astro-ph/9603031.
+             mps   = linear matter power spectrum to use as base.
+             kmin  = minimum wavenumber (Mpc^{-1})
+             kmax  = maximum wavenumber (Mpc^{-1})
+             npts  = number of points to use for interpolation between kmin and kmax.
+        """
         
         self.mps   = mps
         self.cosmo = mps.cosmo
