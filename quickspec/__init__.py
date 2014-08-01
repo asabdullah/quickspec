@@ -7,5 +7,6 @@ import interp
 import cosmo
 
 import mps
+import cib
 import lens
 import gals
