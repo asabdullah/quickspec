@@ -1,7 +1,6 @@
 # Fitting formulae for linear matter power spectra in CDM + Baryon + Massive Neutrino (MDM) cosmologies,
 # using the Eisenstein and Hu fitting formulae (http://arxiv.org/abs/astro-ph/9710252).
 # Code adapted from http://background.uchicago.edu/~whu/transfer/power.c
-/* Daniel J. Eisenstein & Wayne Hu, Institute for Advanced Study */
 
 import numpy as np
 

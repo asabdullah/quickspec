@@ -11,6 +11,6 @@ if __name__ == "__main__":
     from numpy.distutils.core import setup
 
     setup(name='quickspec',
-          packages=['quickspec'],
+          packages=['quickspec', 'quickspec.cib', 'quickspec.mps'],
           package_data={'quickspec': ['cib/data/Bethermin_2011_jbar/*']},
           configuration=configuration)
